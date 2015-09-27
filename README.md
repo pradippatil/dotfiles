@@ -1,6 +1,7 @@
 # vim
 
 References:
+
 http://unlogic.co.uk/2013/02/08/vim-as-a-python-ide/
 
 http://dougblack.io/words/a-good-vimrc.html
