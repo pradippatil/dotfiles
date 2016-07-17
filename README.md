@@ -1,8 +1,9 @@
 # Vim
+My encounters with Vim.
+
+
 > _Vim isn't an editor designed to hold its users' hands. It is a tool, the use of which must be learned._ ([About Vim](http://www.vim.org/about.php))
 
-
-### Random stuff:
 
 ##### Vim as IDE
 * [A Good`.vimrc`](http://dougblack.io/words/a-good-vimrc.html)
