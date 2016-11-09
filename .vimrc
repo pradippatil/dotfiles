@@ -1,42 +1,15 @@
-execute pathogen#infect()
+execute pathogen#infect() 
+call pathogen#helptags() " generate helptags for everything in ‘runtimepath’
 
-syntax on
-set t_Co=16
+syntax on	" highlight syntax
+filetype plugin indent on
+set nocompatible
+
 let g:solarized_termcolors=256
-set background=light
+"set background=light
+set background=dark
 colorscheme solarized
 
-set nocompatible
-filetype off
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Bundle 'scrooloose/nerdtree'
-Bundle 'klen/python-mode'
-
-" Powerline setup
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
-set laststatus=2
-set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-
-" NerdTree setup
-map <F2> :NERDTreeToggle<CR>
-
-augroup vimrc_autocmds
-    autocmd!
-    " highlight characters past column 120
-    autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=Black
-    autocmd FileType python match Excess /\%79v.*/
-    autocmd FileType python set nowrap
-    augroup END
-
-
-" set tabstop=4       " number of visual spaces per TAB
 set softtabstop=4   " number of spaces in tab when editing
 set expandtab       " tabs are spaces
 set shiftwidth=4    " need this to set for autoindent to work
@@ -44,7 +17,6 @@ set shiftwidth=4    " need this to set for autoindent to work
 set number          " show line numbers
 set showcmd         " show command in bottom bar
 set cursorline      " highlight current line
-filetype indent on  " load filetype-specific indent files
 set wildmenu        " visual autocomplete for command menu
 set lazyredraw      " redraw only when we need to.
 set showmatch       " highlight matching [{()}]
@@ -52,52 +24,66 @@ set showmatch       " highlight matching [{()}]
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 
-" turn off search highlight
-nnoremap <leader><space> :nohlsearch<CR>
+" nerdtree settings
+map \           :NERDTreeToggle<CR>
+map \|          :NERDTreeFind<CR>
 
-set list listchars=tab:▷⋅,trail:⋅,nbsp:⋅
-let python_highlight_all = 1
-au FileType py set autoindent
-au FileType py set smartindent
+" airline settings
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+" tagbar settings
+nnoremap <F8> :TagbarToggle<CR>
 
 
-" Python-mode
-" Activate rope
-" Keys:
-" K             Show python docs
-" <Ctrl-Space>  Rope autocomplete
-" <Ctrl-c>g     Rope goto definition
-" <Ctrl-c>d     Rope show documentation
-" <Ctrl-c>f     Rope find occurrences
-" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
-" [[            Jump on previous class or function (normal, visual, operator modes)
-" ]]            Jump on next class or function (normal, visual, operator modes)
-" [M            Jump on previous class or method (normal, visual, operator modes)
-" ]M            Jump on next class or method (normal, visual, operator modes)
-let g:pymode_rope = 1
+" Change leader key from \ to , - easier to type
+let mapleader = "," 
 
-" Documentation
-let g:pymode_doc = 1
-let g:pymode_doc_key = 'K'
+" switch between tabs
+nnoremap th :tabp<CR>
+nnoremap tl :tabn<CR>
 
-"Linting
-let g:pymode_lint = 1
-let g:pymode_lint_checker = "pyflakes,pep8"
-" Auto check on save
-let g:pymode_lint_write = 1
+" Fast saving
+map <Leader>w :w<CR>
+map <Leader>ww :w!<CR>
 
-" Support virtualenv
-let g:pymode_virtualenv = 1
+" enable neocomplete
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
 
-" Enable breakpoints plugin
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_bind = '<leader>b'
 
-" syntax highlighting
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
+" vim-go settings
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:syntastic_go_checkers = "gofmt"
+let g:go_fmt_command = "goimports"
 
-" Don't autofold code
-let g:pymode_folding = 0
+
+
+" vim-go mappings
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>i <Plug>(go-install)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+
+" open definition/declaration
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>d <Plug>(go-def-tab)
+
+" open documentation
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>g <Plug>(go-doc-tab)
+
+" Show a list of interfaces which is implemented by the type under your cursor with <leader>s
+au FileType go nmap <Leader>s <Plug>(go-implements)
+
+" Show type info for the word under your cursor with <leader>i (useful if you have disabled auto showing type info via g:go_auto_type_info)
+au FileType go nmap <Leader>i <Plug>(go-info)
