@@ -1,0 +1,28 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "go.buildOnSave": true,
+    "go.lintOnSave": true,
+    "go.vetOnSave": true,
+    "go.buildTags": "",
+    "go.buildFlags": [],
+    "go.lintTool": "golint",
+    "go.lintFlags": [],
+    "go.vetFlags": [],
+    "go.coverOnSave": false,
+    "go.useCodeSnippetsOnFunctionSuggest": false,
+    "go.formatOnSave": true,
+    "go.formatTool": "goimports",
+    "go.formatFlags": [],
+    "go.goroot": "/usr/local/go",
+    "go.gopath": "/home/pradip/GO",
+    "go.gocodeAutoBuild": false,
+
+    "vim.insertModeKeyBindings": [{
+        "before": ["j", "j"],
+        "after": ["<Esc>"]
+    }],
+
+    // Editor settings
+    "editor.fontSize": 16,
+    "editor.cursorStyle": "block"
+}
