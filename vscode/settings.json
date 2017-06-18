@@ -1,0 +1,44 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "go.buildOnSave": "package",
+    "go.lintOnSave": "package",
+    "go.vetOnSave": "package",
+    "go.buildTags": "",
+    "go.buildFlags": [],
+    "go.lintTool": "golint",
+    "go.lintFlags": [],
+    "go.vetFlags": [],
+    "go.coverOnSave": false,
+    "go.useCodeSnippetsOnFunctionSuggest": false,
+    "go.formatOnSave": true,
+    "go.formatTool": "goimports",
+    "go.formatFlags": [],
+    "go.goroot": "/usr/local/go",
+    "go.gopath": "/home/pradip/GO",
+    "go.gocodeAutoBuild": false,
+
+    "vim.insertModeKeyBindings": [{
+        "before": ["j", "j"],
+        "after": ["<Esc>"]
+    }],
+
+    // Editor settings
+    "editor.fontSize": 16,
+    "editor.cursorStyle": "underline-thin", //line-thin, underline-thin and block-outline
+    //"editor.fontFamily": "'Droid Sans Mono', 'Courier New', monospace, 'Droid Sans Fallback'"
+    "editor.fontFamily": "Monaco,Menlo,Consolas,'Courier New',monospace",
+
+    //Privacy settings
+    //disable crash reporting
+    "telemetry.enableCrashReporter": false,
+
+    //disable telemetry reporting
+    "telemetry.enableTelemetry": false,
+    "workbench.iconTheme": "vs-seti",
+
+    //A Minimap gives you a high level overview of your source code which is very useful for quick navigation and code understanding.
+    "editor.minimap.enabled": true,
+    "workbench.colorTheme": "Visual Studio Dark",
+    "python.pythonPath": "/usr/local/bin/python3",
+    "vim.disableAnnoyingNeovimMessage": true
+}
